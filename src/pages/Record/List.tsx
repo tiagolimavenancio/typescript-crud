@@ -1,18 +1,23 @@
-import { Record } from "../../interfaces/RecordEntities";
-import { RecordListProps } from "../../interfaces/PageProps";
-import { usePage } from "../../contexts/Page";
+import { Record } from "interfaces/RecordEntities";
+import { RecordListProps } from "interfaces/PageProps";
+import { usePage } from "contexts/Page";
+import Status from "components/Status";
+import Error from "components/Error";
 
 const RecordList = <T extends Record>({
   ListItem,
   records,
   emptyRecord,
   activeRecord,
+  loading,
+  error,
   setActiveRecord,
 }: RecordListProps<T>) => {
   const { page } = usePage();
 
   return (
     <div className="list">
+      {error && <Error error={error} />}
       <h2>{page}</h2>
       <button className="bt-new" onClick={() => setActiveRecord(emptyRecord)}>
         New
@@ -28,6 +33,7 @@ const RecordList = <T extends Record>({
           </li>
         ))}
       </ul>
+      {loading && <Status text="Loading..." />}
     </div>
   );
 };
