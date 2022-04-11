@@ -25,7 +25,7 @@ const RecordIndex = <T extends Record>({
           activeRecord={activeRecord}
           setActiveRecord={setActiveRecord}
         />
-        <RecordMutations<T> FormFields={FormFields} activeRecord={activeRecord} />
+        <RecordMutations<T> FormFields={FormFields} activeRecord={activeRecord} apiPath={apiPath} />
       </div>
     </div>
   );

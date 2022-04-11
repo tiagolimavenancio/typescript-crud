@@ -2,14 +2,11 @@ import { Record } from "../../interfaces/RecordEntities";
 import { RecordNewProps } from "../../interfaces/PageProps";
 import RecordForm from "./Form";
 
-const RecordNew = <T extends Record>({
-  FormFields,
-  activeRecord,
-}: RecordNewProps<T>) => {
+const RecordNew = <T extends Record>({ FormFields, activeRecord, create }: RecordNewProps<T>) => {
   return (
     <div className="new">
       <h2>New</h2>
-      <RecordForm FormFields={FormFields} activeRecord={activeRecord} />
+      <RecordForm FormFields={FormFields} activeRecord={activeRecord} submitAction={create} />
     </div>
   );
 };

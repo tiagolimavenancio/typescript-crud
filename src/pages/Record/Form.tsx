@@ -3,8 +3,15 @@ import { Record } from "interfaces/RecordEntities";
 import { RecordFormProps } from "interfaces/PageProps";
 import useForm from "hooks/useForm";
 
-const RecordForm = <T extends Record>({ FormFields, activeRecord }: RecordFormProps<T>) => {
-  const { formState, setFormState, handleChange } = useForm<T>(activeRecord);
+const RecordForm = <T extends Record>({
+  FormFields,
+  activeRecord,
+  submitAction,
+}: RecordFormProps<T>) => {
+  const { formState, setFormState, handleChange, handleSubmit } = useForm<T>(
+    activeRecord,
+    submitAction
+  );
 
   useEffect(() => {
     if (activeRecord) {
@@ -14,7 +21,7 @@ const RecordForm = <T extends Record>({ FormFields, activeRecord }: RecordFormPr
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormFields formState={formState} handleChange={handleChange} />
         <input type="submit" />
       </form>
