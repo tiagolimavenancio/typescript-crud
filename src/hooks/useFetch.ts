@@ -4,6 +4,8 @@ import { Record } from "../interfaces/RecordEntities";
 
 const useFetch = <T extends Record>(path: string, options?: {}) => {
   const [records, setRecords] = useState<T[]>([]);
+  const [version, setVersion] = useState(+new Date());
+
   const url = `${process.env.REACT_APP_API}/${path}`;
 
   useEffect(() => {
@@ -13,9 +15,9 @@ const useFetch = <T extends Record>(path: string, options?: {}) => {
     };
 
     callFetch();
-  }, [url, options]);
+  }, [url, options, version]);
 
-  return { records };
+  return { records, setVersion };
 };
 
 export default useFetch;
