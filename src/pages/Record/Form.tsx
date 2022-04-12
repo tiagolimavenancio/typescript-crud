@@ -6,6 +6,7 @@ import useForm from "hooks/useForm";
 const RecordForm = <T extends Record>({
   FormFields,
   activeRecord,
+  success,
   submitAction,
 }: RecordFormProps<T>) => {
   const { formState, setFormState, handleChange, handleSubmit } = useForm<T>(
@@ -14,10 +15,10 @@ const RecordForm = <T extends Record>({
   );
 
   useEffect(() => {
-    if (activeRecord) {
+    if (activeRecord.id || success) {
       setFormState(activeRecord);
     }
-  }, [setFormState, activeRecord]);
+  }, [activeRecord, success, setFormState]);
 
   return (
     <div>

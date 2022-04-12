@@ -35,11 +35,13 @@ export interface RecordNewProps<T> {
   FormFields: React.FC<FormFieldsProps<T>>;
   activeRecord: T;
   create: Action<T>;
+  success?: boolean;
 }
 
 export interface RecordEditProps<T> {
   FormFields: React.FC<FormFieldsProps<T>>;
   activeRecord: T;
+  success?: boolean;
   update: Action<T>;
   remove: Action<T>;
 }
@@ -47,6 +49,7 @@ export interface RecordEditProps<T> {
 export interface RecordFormProps<T> {
   FormFields: React.FC<FormFieldsProps<T>>;
   activeRecord: T;
+  success?: boolean;
   submitAction: Action<T>;
 }
 

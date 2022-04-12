@@ -5,6 +5,7 @@ import RecordForm from "./Form";
 const RecordEdit = <T extends Record>({
   FormFields,
   activeRecord,
+  success,
   update,
   remove,
 }: RecordEditProps<T>) => {
@@ -14,7 +15,12 @@ const RecordEdit = <T extends Record>({
         Remove
       </button>
       <h2>Edit</h2>
-      <RecordForm FormFields={FormFields} activeRecord={activeRecord} submitAction={update} />
+      <RecordForm
+        FormFields={FormFields}
+        activeRecord={activeRecord}
+        success={success}
+        submitAction={update}
+      />
     </div>
   );
 };
